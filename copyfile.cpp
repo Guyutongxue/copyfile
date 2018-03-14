@@ -13,7 +13,7 @@ string getCurDir(){
 	char chPath[1000];
 	GetModuleFileName(NULL,(LPSTR)chPath,sizeof(chPath));
 	strrchr(chPath,'\\')[1]= 0;
-	string strPath(chPath);  // ÀýÈçstr_url==e:\program\Debug
+	string strPath(chPath);
 	return strPath;
 }
 
@@ -27,7 +27,6 @@ void initial(){
 		nType = GetDriveType(rootPath);
 		if(nType != DRIVE_NO_ROOT_DIR){
 			contain[length++]=rootPath[0];
-			//cout<<rootPath<<"\t"<<driveType<<endl;
 		}
 	}
 }
@@ -48,7 +47,6 @@ char diff(){
 			if(!isFound){
 				aim=rootPath[0];
 			}
-			//cout<<rootPath<<"\t"<<driveType<<endl;
 		}
 	}
 	initial();
@@ -64,11 +62,11 @@ string formatTime(time_t time1){
 }  
 
 int main(){
-	cout<<"copyfile (U-Disk Copier) v1.1 by Guyutongxue"<<endl;
+	cout<<"copyfile (U-Disk Copier) v1.1.1 by Guyutongxue"<<endl;
 	string proDir=getCurDir();
 	cout<<"Program Directory: "<<proDir<<endl;
-	
     initial();
+    cout<<"Keep detecting..."<<endl;
 	while(true){
 		string strTime=formatTime(time(NULL));
 		char aimDrive=diff();
@@ -80,9 +78,7 @@ int main(){
 			string command="xcopy "+aimDriveRoot+" "+destDir+"\\ /s /e /h";
 			cout<<command<<endl;
 			system(command.c_str());
-		}
-		else{
-			cout<<"No disk found."<<endl; 
+			cout<<"Keep detecting..."<<endl;
 		}
 		Sleep(1000);
 	}
