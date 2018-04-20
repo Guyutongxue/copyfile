@@ -1,2 +1,2 @@
-Set ws = CreateObject("Wscript.Shell")
-ws.run "cmd /c copyfile.exe",vbhide
+Set ws = Wscript.CreateObject("Wscript.Shell")
+a = ws.run("copyfile.exe",0)

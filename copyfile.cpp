@@ -62,7 +62,7 @@ string formatTime(time_t time1){
 }  
 
 int main(){
-	cout<<"copyfile (U-Disk Copier) v1.1.1 by Guyutongxue"<<endl;
+	cout<<"copyfile (U-Disk Copier) v1.1.2 by Guyutongxue"<<endl;
 	string proDir=getCurDir();
 	cout<<"Program Directory: "<<proDir<<endl;
     initial();
